@@ -6,6 +6,7 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private Double startTime = null;  //Double object to check if set
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -63,4 +64,29 @@ public class Employee {
     public double getTotalPay(){
         return (getRegularHours() * payRate) + (getOvertimeHourse() * payRate * 1.5);
     }
+    public void punchIn(double time){
+        if(startTime !=null) {
+             System.out.println("Already punched in at: " + startTime);
+
+        }else {
+            startTime = time;
+            System.out.println("Punched in at: " + time);
+        }
+
+    }
+    public void punchOut(double time){
+        if(startTime == null) {
+            System.out.println("Please punch in first. ");
+        }else {
+            double worked = time - startTime;
+            if(worked < 0) {
+                System.out.println("Invalid time. Punch out time cannot be earlier than punch in.");
+            }
+            this.hoursWorked+=worked;
+
+        }
+
+        }
+
+
 }
