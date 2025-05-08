@@ -6,6 +6,10 @@ public class TheApp {
         Room room = new Room(2, 150.00,false,false);
         System.out.println("Room available: " + room.isAvailable());
 
+        Room room1 = new Room(2, 150.00,false,true);
+        System.out.println("Room available: " + room1.isAvailable());
+
+
         Reservation res = new Reservation("king", 3, true);
         System.out.println("Reservation total: $" + res.getReservationTotal());
 

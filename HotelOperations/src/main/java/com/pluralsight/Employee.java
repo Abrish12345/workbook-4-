@@ -8,7 +8,7 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
-    private Double startTime = null;  //Double object to check if set
+    private Double startTime;  //Double object to check if set
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -22,85 +22,60 @@ public class Employee {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public double getPayRate() {
         return payRate;
-    }
-
-    public void setPayRate(double payRate) {
-        this.payRate = payRate;
     }
 
     public double getHoursWorked() {
         return hoursWorked;
     }
 
-    public void setHoursWorked(double hoursWorked) {
-        this.hoursWorked = hoursWorked;
-    }
+
+
     public double getRegularHours() {
         return Math.min(40, hoursWorked);
     }
-    public double getOvertimeHourse (){
+    public double getOvertimeHours (){
         return Math.max(0, hoursWorked -40);
     }
     public double getTotalPay(){
-        return (getRegularHours() * payRate) + (getOvertimeHourse() * payRate * 1.5);
+        return (getRegularHours() * payRate) + (getOvertimeHours() * payRate * 1.5);
     }
 
 
 
     public void punchIn(double time){
-        if(startTime !=null) {
-             System.out.println("Already punched in at: " + startTime);
 
-        }else {
-            startTime = time;
-            System.out.println("Punched in at: " + time);
-        }
+        this.startTime=time;
 
     }
     public void punchIn(){
         LocalDateTime dateTime= LocalDateTime.now();
         double currentTime = dateTime.getHour() + dateTime.getMinute() / 60.0;
-        punchIn(currentTime);
+       this.punchIn(currentTime);
     }
     public void punchOut(double time){
-        if(startTime == null) {
-            System.out.println("Please punch in first. ");
+        if(time >= startTime) {
+           double worked = time - startTime; //calculate hours worked
+            this.hoursWorked +=worked; //add the worked hours to total hoursworked
         }else {
-            double worked = time - startTime;
-            if(worked < 0) {
                 System.out.println("Invalid time. Punch out time cannot be earlier than punch in.");
             }
-            this.hoursWorked+=worked;
 
         }
 
-        }
         public void punchOut(){
             LocalDateTime dateTime= LocalDateTime.now();
             double currentTime=dateTime.getHour() + dateTime.getMinute() /60.0;
-            punchOut(currentTime);
+            this.punchOut(currentTime);
 
         }
 
