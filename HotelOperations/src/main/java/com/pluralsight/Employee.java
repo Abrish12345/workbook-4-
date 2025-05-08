@@ -80,4 +80,6 @@ public class Employee {
         }
 
 
+    public double getStartTime() { return startTime;
+    }
 }

@@ -8,26 +8,26 @@ class RoomTest {
     @Test
    public void checkIn_shouldNotAllow_whenRoomIsAlreadyOccupied(){
         //arrange
-        Room room = new Room(4,150,true,false);
+        Room room = new Room(4,150,true,true);
 
         //act
         room.checkIn();
 
         //assert
-        assertFalse(false);
+        assertTrue(room.isOccupied() );
         assertFalse(room.isDirty());
     }
     @Test
     public void checkOut_shouldMakeRoomAvailableAndDirty(){
         //Arrange
-        Room room = new Room(4,150,true,false);
+        Room room = new Room(4,150,true,true);
 
         //act
         room.checkOut();
 
         //assert
         assertFalse(room.isOccupied());  //Room should not be occupied after checkout
-        assertTrue(room.isDirty());     //Room should be dirty after checkout
+        assertTrue(room.isDirty());     //Room should be clean after checkout
 
     }
     @Test
@@ -41,7 +41,7 @@ class RoomTest {
 
        //assert
 
-        assertFalse(room.isDirty());
+        assertFalse(room.isDirty());  //room should be clean
 
     }
 
