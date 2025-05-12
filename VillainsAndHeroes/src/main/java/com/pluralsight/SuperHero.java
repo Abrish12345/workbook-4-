@@ -13,7 +13,7 @@ public class SuperHero extends SuperPerson {
         this.experiencePoints = powerLevel;
 
         //print out the hero
-        System.out.println(this.name + "has arrived with a power of " + powerLevel);
+        System.out.println(this.name + " has arrived with a power of " + powerLevel);
 
     }
 
@@ -23,7 +23,7 @@ public class SuperHero extends SuperPerson {
         //make the hero do a random amount of damage to the opponenet
         int damageAmount = new Random().nextInt(21);
 
-        //the damage should be a random numnber plus the experiencesPoints(powerLevel)
+        //the damage should be a random number plus the experiencesPoints(powerLevel)
         int totalDamage = damageAmount + this.experiencePoints;
 
         //if the base damage (without the xp) was 0, don't do any damage and just say you missed
@@ -31,10 +31,10 @@ public class SuperHero extends SuperPerson {
         if (damageAmount ==0){
             System.out.println(this.name + "missed the attack!");
         }else {
-            //otherwise deal the damage and say something about you kicking butt agains your opponent
+            //otherwise deal the damage and say something about you kicking butt against your opponent
              opponent.takeDamage(totalDamage);
-             System.out.println(this.name + "kick butt and deals" + totalDamage + "damage to" + opponent.name);
-             System.out.println(opponent.name + "now has " + opponent.health + "health");
+             System.out.println(this.name + "kick butt and deals " + totalDamage + " damage to " + opponent.name);
+             System.out.println(opponent.name + "now has " + opponent.health + " health");
         }
     }
 

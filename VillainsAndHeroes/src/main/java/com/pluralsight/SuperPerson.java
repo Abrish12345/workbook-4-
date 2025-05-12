@@ -27,7 +27,7 @@ public class SuperPerson {
         //line returns a number between 0 and 20
         int damageAmount= new Random().nextInt(21);
         //print out who we are fighting
-        System.out.println(this.name + "is fighting" + opponent.name);
+        System.out.println(this.name + " is fighting " + opponent.name);
     }
     //this methods allows a super person to take damage
 
@@ -42,6 +42,6 @@ public class SuperPerson {
 
     //a way to ask the super person how they are doing.
     public String getStatus(){
-        return this.name + "has" + this.health + "health left!";
+        return this.name + "has " + this.health + " health left! ";
     }
 }
