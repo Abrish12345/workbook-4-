@@ -35,7 +35,7 @@ public class SuperApp {
 
         System.out.println(hero.getStatus());
         System.out.println(villain.getStatus());
-        /// //////////////////////////////////////////////////////////
+        /// /////////////////////////////////////////////////////////////
 
         System.out.println(" Class assignment");
         //create a hero object with a name, health, and power level
@@ -91,6 +91,12 @@ public class SuperApp {
         }else {
             System.out.println(supperVillain.name + " is the winner");
         }
+        superhero.printBattleLog();
+        supperVillain.printBattleLog();
+
+        superhero.addPowerUp("Poison", 20);
+        supperVillain.addPowerUp("growth spell", 30);
+
 
     }
 }

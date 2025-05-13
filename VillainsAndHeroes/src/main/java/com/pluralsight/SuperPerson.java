@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-import java.util.Random;
+import java.util.*;
 
 public class SuperPerson {
 
@@ -8,6 +8,9 @@ public class SuperPerson {
     protected String name;
     protected int health;
     protected int experiencePoints;
+    private HashMap<String, Integer> battleLog =new HashMap<>();
+    private HashMap<String, Integer> inventory = new HashMap<>();
+
 
     public SuperPerson(String name, int health) {
         this.name = name;
@@ -28,12 +31,13 @@ public class SuperPerson {
         int damageAmount= new Random().nextInt(21);
         //print out who we are fighting
         System.out.println(this.name + " is fighting " + opponent.name);
+        logHit(opponent);
     }
-    //this methods allows a super person to take damage
+    //This methods allows a super person to take damage
 
     public void takeDamage(int damageAmount){
       //subtract the damage amount from the health
-        //but we dont want ever set our health below 0
+        //But we don't want ever set our health below 0
         this.health -=damageAmount;
         if(this.health <0){
             this.health =0;
@@ -44,4 +48,36 @@ public class SuperPerson {
     public String getStatus(){
         return this.name + "has " + this.health + " health left! ";
     }
+
+    //Backlog
+    public void logHit(SuperPerson opponent){
+        String name=opponent.name;
+        int count = battleLog.getOrDefault(name,0);
+        battleLog.put(name,count + 1);
+    }
+
+    public void printBattleLog(){
+        System.out.println("Battle Log for " + name + ":");
+        for (HashMap.Entry<String, Integer> entry : battleLog.entrySet()) {
+            System.out.println(" - Hit " + entry.getKey() + ": " + entry.getValue() + " times");
+        }
+    }
+    public void addPowerUp(String spell, int value){
+        inventory.put(spell, value);
+    }
+    public int getPowerBones(){
+        if (!inventory.isEmpty()){
+            List<String> keys =new ArrayList<>(inventory.keySet());
+
+            String ranndomkey = keys.get(new Random().nextInt(keys.size()));
+
+            int bones = inventory.get(ranndomkey);
+            System.out.println(name + " uses power_up: " + ranndomkey + " (+" + bones + "damage)");
+           return bones;
+
+        }
+        return 0;
+    }
+
+
 }

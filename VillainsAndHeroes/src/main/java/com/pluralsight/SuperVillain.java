@@ -15,8 +15,12 @@ public class SuperVillain extends SuperPerson {
     @Override
     public void fight (SuperPerson opponent){
         int damage =new Random().nextInt(21);
-        int total =damage + this.experiencePoints;
+        int bonus = getPowerBones();
+        int total= this.experiencePoints + bonus;
+
         System.out.println(this.name + " attacks " + opponent.name);
+        logHit(opponent);
+
 
         if (damage !=0){
             opponent.takeDamage(total);
@@ -35,7 +39,7 @@ public class SuperVillain extends SuperPerson {
             this.health = 100;
         }
         System.out.println(this.name + " heals themselves for 20 health! ");
-    }
 
+    }
 
 }

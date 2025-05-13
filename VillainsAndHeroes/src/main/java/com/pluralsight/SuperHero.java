@@ -20,11 +20,14 @@ public class SuperHero extends SuperPerson {
     @Override
     public void fight(SuperPerson opponent){
 
-        //make the hero do a random amount of damage to the opponenet
+        //make the hero do a random amount of damage to the opponent
         int damageAmount = new Random().nextInt(21);
+        int bonus = getPowerBones();
+        int totalDamage= this.experiencePoints + bonus;
 
         //the damage should be a random number plus the experiencesPoints(powerLevel)
-        int totalDamage = damageAmount + this.experiencePoints;
+        //int totalDamage = damageAmount + this.experiencePoints;
+        logHit(opponent);
 
         //if the base damage (without the xp) was 0, don't do any damage and just say you missed
 
